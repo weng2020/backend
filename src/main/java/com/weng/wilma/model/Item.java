@@ -84,5 +84,8 @@ public class Item{
         return status;
     }
 
+    public Item(){
+
+    }
 
 }
