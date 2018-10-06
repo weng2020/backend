@@ -44,7 +44,9 @@ public class ItemDao implements BaseDao<Item>{
         if(total % perPage > 0){
             lastPage+= 1;
         }
-        List<Item> items = entityManager.createNativeQuery("Select * from items order by item_desc limit " + perPage + " offset " + from + "", Item.class).getResultList();
+        String hql = "FROM Item item ORDER BY item.description";
+        Query query = entityManager.createQuery(hql).setFirstResult(from).setMaxResults(perPage);
+        List<Item> items = query.getResultList();
         paginate.setData(items);
         paginate.setTotal(total);
         paginate.setCurrentPage(page).setPerPage(perPage).setLastPage(lastPage);
