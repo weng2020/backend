@@ -35,19 +35,20 @@ public class ItemDao implements BaseDao<Item>{
     @Override
     public Paging paginate(Integer page){
         Paging paginate = new Paging();
-        Integer from = (page - 1) * 10;
+        Integer perPage = 15;
+        Integer from = (page - 1) * perPage;
         Integer to;
         Integer lastPage;
         Integer total = Integer.parseInt(entityManager.createNativeQuery("Select count(*) as count from items").getSingleResult().toString());
-        lastPage = total / 10;
-        if(total % 10 > 0){
+        lastPage = total / perPage;
+        if(total % perPage > 0){
             lastPage+= 1;
         }
-        List<Item> items = entityManager.createNativeQuery("Select * from items order by item_desc limit 10 offset " + from + "", Item.class).getResultList();
+        List<Item> items = entityManager.createNativeQuery("Select * from items order by item_desc limit " + perPage + " offset " + from + "", Item.class).getResultList();
         paginate.setData(items);
         paginate.setTotal(total);
-        paginate.setCurrentPage(page).setPerPage(10).setLastPage(lastPage);
-        to = from + 10;
+        paginate.setCurrentPage(page).setPerPage(perPage).setLastPage(lastPage);
+        to = from + perPage;
         from+=1;
         paginate.setFrom(from).setTo(to);
         return paginate;
