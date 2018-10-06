@@ -1,15 +1,15 @@
 package com.weng.wilma.common;
 import java.util.List;
-public class Paging<T>{
+public class Paging{
     private Integer total;
     private Integer current_page;
-    private List<T> data;
+    private List<?> data;
     private Integer from;
     private Integer to;
     private Integer last_page;
     private Integer per_page;
 
-    public Paging<T> setTotal(Integer total){
+    public Paging setTotal(Integer total){
         this.total = total;
         return this;
     }
@@ -18,7 +18,7 @@ public class Paging<T>{
         return total ;
     }
 
-    public Paging<T> setCurrentPage(Integer curr_page){
+    public Paging setCurrentPage(Integer curr_page){
         this.current_page = curr_page;
         return this;
     }
@@ -27,15 +27,15 @@ public class Paging<T>{
         return current_page;
     }
 
-    public void setData(List<T> o){
+    public void setData(List<?> o){
         data = o;
     }
 
-    public List<T> getData(){
+    public List<?> getData(){
         return data;
     }
 
-    public Paging<T> setFrom(Integer from){
+    public Paging setFrom(Integer from){
         this.from = from;
         return this;
     }
@@ -44,7 +44,7 @@ public class Paging<T>{
         return from;
     }
 
-    public Paging<T> setTo(Integer to){
+    public Paging setTo(Integer to){
         this.to = to;
         return this;
     }
@@ -53,7 +53,7 @@ public class Paging<T>{
         return to;
     }
 
-    public Paging<T> setLastPage(Integer lastPage){
+    public Paging setLastPage(Integer lastPage){
         this.last_page = lastPage;
         return this;
     }
@@ -62,7 +62,7 @@ public class Paging<T>{
         return last_page;
     }
 
-    public Paging<T> setPerPage(Integer perPage){
+    public Paging setPerPage(Integer perPage){
         this.per_page = perPage;
         return this;
     }

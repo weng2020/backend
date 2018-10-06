@@ -26,7 +26,7 @@ public class ItemService implements BaseService<Item>{
         return itemDao.findBy(value);
     }
 
-    public Paging<Item> paginate(Integer page){
+    public Paging paginate(Integer page){
         return itemDao.paginate(page);
     }
  

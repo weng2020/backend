@@ -27,8 +27,8 @@ public class ItemController{
     }
 
     @RequestMapping(value="api/items/page/{page}", method = RequestMethod.GET)
-    public ResponseEntity<Paging<Item>> getItems(@PathVariable("page") Integer page){
-        Paging<Item> list = itemService.paginate(page);
-        return new ResponseEntity<Paging<Item>>(list, HttpStatus.OK);
+    public ResponseEntity<Paging> getItems(@PathVariable("page") Integer page){
+        Paging list = itemService.paginate(page);
+        return new ResponseEntity<Paging>(list, HttpStatus.OK);
     }
 }

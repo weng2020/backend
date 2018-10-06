@@ -33,8 +33,8 @@ public class ItemDao implements BaseDao<Item>{
     }
 
     @Override
-    public Paging<Item> paginate(Integer page){
-        Paging<Item> paginate = new Paging<Item>();
+    public Paging paginate(Integer page){
+        Paging paginate = new Paging();
         Integer from = (page - 1) * 10;
         Integer to;
         Integer lastPage;
@@ -47,12 +47,8 @@ public class ItemDao implements BaseDao<Item>{
         paginate.setData(items);
         paginate.setTotal(total);
         paginate.setCurrentPage(page).setPerPage(10).setLastPage(lastPage);
-        if(from <= 0){
-            from = 1;
-            to = 10;
-        }else{
-            to = from + 10;
-        }
+        to = from + 10;
+        from+=1;
         paginate.setFrom(from).setTo(to);
         return paginate;
     }

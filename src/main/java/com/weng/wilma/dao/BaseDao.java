@@ -6,5 +6,5 @@ import com.weng.wilma.common.Paging;
 public interface BaseDao<T>{
     List<T> findBy(String o);
     List<T> findAll();
-    Paging<T> paginate(Integer o);
+    Paging paginate(Integer o);
 }
