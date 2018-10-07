@@ -33,14 +33,11 @@ public class ItemDao implements BaseDao<Item>{
 
     // @Override
     public Page paginate(Integer page, String filter){
-        // unsay alternative ani?
-        Integer total = Integer.parseInt(entityManager.createNativeQuery("Select count(*) as count from items").getSingleResult().toString());
-        
+       
         String hql = "FROM Item item where item.description LIKE :desc ORDER BY item.description";
         Query query = entityManager.createQuery(hql).setParameter("desc", "%"+ filter + "%");
 
         Pagination pag = new Pagination();
-        pag.setTotal(total);
         pag.setQuery(query);
         pag.paginate(10);
 

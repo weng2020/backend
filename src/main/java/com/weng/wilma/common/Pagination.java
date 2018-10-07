@@ -8,7 +8,6 @@ public class Pagination{
 
     private Query query;
     private Integer perPage;
-    private Integer total;
 
     public Pagination(){
     }
@@ -20,25 +19,28 @@ public class Pagination{
     public Query getQuery(){
         return this.query;
     }
-    public void setTotal(Integer total){
-        this.total = total;
-    }
+    // public void setTotal(Integer total){
+    //     this.total = total;
+    // }
 
     public Page getPage(Integer pageNumber){
         Integer from = (pageNumber - 1) * perPage;
         Integer to; 
-        Integer lastPage = total / perPage;
-        if(total % perPage > 0){
-            lastPage+= 1;
-        }
+        Integer total = getQuery().getResultList().size();
         Page paginate = new Page();
         paginate.setData(getQuery().setFirstResult(from).setMaxResults(perPage).getResultList());
-        paginate.setTotal(total).setLastPage(lastPage);
+        
         paginate.setCurrentPage(pageNumber).setPerPage(perPage);
         to = from + getQuery().setFirstResult(from).setMaxResults(perPage).getResultList().size();
         from+=1;
         paginate.setFrom(from).setTo(to);
-
+        paginate.setTotal(total);
+        
+        Integer lastPage = total / perPage;
+        if(total % perPage > 0){
+            lastPage+= 1;
+        }
+        paginate.setLastPage(lastPage);
         return paginate;
     }
 
