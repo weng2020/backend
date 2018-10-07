@@ -1,6 +1,6 @@
 package com.weng.wilma.common;
 import java.util.List;
-public class Paging{
+public class Page{
     private Integer total;
     private Integer current_page;
     private List<?> data;
@@ -9,7 +9,7 @@ public class Paging{
     private Integer last_page;
     private Integer per_page;
 
-    public Paging setTotal(Integer total){
+    public Page setTotal(Integer total){
         this.total = total;
         return this;
     }
@@ -18,7 +18,7 @@ public class Paging{
         return total ;
     }
 
-    public Paging setCurrentPage(Integer curr_page){
+    public Page setCurrentPage(Integer curr_page){
         this.current_page = curr_page;
         return this;
     }
@@ -35,7 +35,7 @@ public class Paging{
         return data;
     }
 
-    public Paging setFrom(Integer from){
+    public Page setFrom(Integer from){
         this.from = from;
         return this;
     }
@@ -44,7 +44,7 @@ public class Paging{
         return from;
     }
 
-    public Paging setTo(Integer to){
+    public Page setTo(Integer to){
         this.to = to;
         return this;
     }
@@ -53,7 +53,7 @@ public class Paging{
         return to;
     }
 
-    public Paging setLastPage(Integer lastPage){
+    public Page setLastPage(Integer lastPage){
         this.last_page = lastPage;
         return this;
     }
@@ -62,9 +62,10 @@ public class Paging{
         return last_page;
     }
 
-    public Paging setPerPage(Integer perPage){
+    public Page setPerPage(Integer perPage){
         this.per_page = perPage;
         return this;
     }
+
 
 }

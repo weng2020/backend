@@ -4,9 +4,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.weng.wilma.service.ItemService;
-import com.weng.wilma.common.Paging;
+import com.weng.wilma.common.Page;
+import com.weng.wilma.common.Pagination;
 import com.weng.wilma.model.Item;
 import java.util.List;
+
 
 @RestController
 public class ItemController{
@@ -26,9 +28,9 @@ public class ItemController{
         return new ResponseEntity<List<Item>>(list, HttpStatus.OK);
     }
 
-    @RequestMapping(value="api/items/page/{page}", method = RequestMethod.GET)
-    public ResponseEntity<Paging> getItems(@PathVariable("page") Integer page){
-        Paging list = itemService.paginate(page);
-        return new ResponseEntity<Paging>(list, HttpStatus.OK);
+    @RequestMapping(value="api/items/search/{filter}/page/{page}", method = RequestMethod.GET)
+    public ResponseEntity<Page> getItem1(@PathVariable("page") Integer page, @PathVariable("filter") String filter){
+        Page p = itemService.paginate(page,filter);
+        return new ResponseEntity<Page>(p, HttpStatus.OK);
     }
 }

@@ -5,7 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.weng.wilma.common.Paging;
+import com.weng.wilma.common.Page;
+import com.weng.wilma.common.Pagination;
 import com.weng.wilma.dao.ItemDao;
 import com.weng.wilma.model.Item;
 
@@ -26,8 +27,8 @@ public class ItemService implements BaseService<Item>{
         return itemDao.findBy(value);
     }
 
-    public Paging paginate(Integer page){
-        return itemDao.paginate(page);
+    public Page paginate(Integer page, String filter){
+        return itemDao.paginate(page, filter);
     }
  
 }
