@@ -35,7 +35,7 @@ public class ItemDao implements BaseDao<Item>{
     public Page paginate(Integer page, String filter){
        
         String hql = "FROM Item item where item.description LIKE :desc ORDER BY item.description";
-        Query query = entityManager.createQuery(hql).setParameter("desc", "%"+ filter + "%");
+        Query query = entityManager.createQuery(hql).setParameter("desc", "%"+ filter.trim() + "%");
 
         Pagination pag = new Pagination();
         pag.setQuery(query);
