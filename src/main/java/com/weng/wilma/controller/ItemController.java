@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.weng.wilma.service.ItemService;
 import com.weng.wilma.common.Page;
-import com.weng.wilma.common.Pagination;
 import com.weng.wilma.model.Item;
 import java.util.List;
 
@@ -31,6 +30,7 @@ public class ItemController{
     @RequestMapping(value="api/items/search/{filter}/page/{page}", method = RequestMethod.GET)
     public ResponseEntity<Page> getItem1(@PathVariable("page") Integer page, @PathVariable("filter") String filter){
         Page p = itemService.paginate(page,filter);
+      
         return new ResponseEntity<Page>(p, HttpStatus.OK);
     }
 }
