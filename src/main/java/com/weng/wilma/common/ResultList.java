@@ -19,7 +19,6 @@ public class ResultList<T>{
         return this;
     }
 
-
     public List<T> get(){
         return query.getResultList();
     }
