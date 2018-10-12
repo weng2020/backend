@@ -35,9 +35,12 @@ public class ItemDao implements BaseDao<Item>{
 
     @Override
     public List<Item> findAll(){
-        ResultList<Item> r = new ResultList<Item>();
-        
-        return r.searchBy(Item.class, "description", "gran",entityManager).get();
+
+        ResultList<Item> r = new ResultList<Item>(Item.class, entityManager);
+      
+        List<Item> item = r.where("description","like","coke").get();
+        System.out.println("size: " + r.get().size());
+        return item;
     }
 
     @Override
